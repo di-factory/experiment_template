@@ -1,1 +1,0 @@
-#Tell about each notebook of the directory
