@@ -1,0 +1,9 @@
+{
+    "client": "client",
+    "project": "project",
+    "experiment" : "experiment_1",
+    "year-sprint": "2023-01",
+    "author_name": "Your short name",
+    "description": "A short description of the project.",
+    "open_source_license": ["MIT", "BSD-3-Clause", "No license file"]
+}
