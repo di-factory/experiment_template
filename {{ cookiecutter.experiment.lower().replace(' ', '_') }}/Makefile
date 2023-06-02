@@ -48,7 +48,7 @@ init_dvc_in_s3:
 	
 ## Download Data from S3
 sync_data_from_s3:
-	aws s3 sync s3://$(BUCKET)/data/ data/
+	aws s3 sync s3://$(BUCKET)/dif-template $$(HOME)/$(CLIENT)-$(PROJECT)/$(EXPERIMENT)/dif-template
 
 ## Set up python interpreter environment
 environment:
