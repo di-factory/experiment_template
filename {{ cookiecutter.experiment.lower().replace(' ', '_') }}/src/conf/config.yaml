@@ -11,27 +11,11 @@ paths:
   reports: ${hydra:runtime.cwd}/reports
 
 cloud_paths:
-  bucket_path: >
-      dif-{{ cookiecutter.client.lower().replace(' ', '_')}}-
-      {{cookiecutter.project.lower().replace(' ', '_')}}-
-      bucket
-  mlflow-path: >
-      ${bucket_path}/mlflow/bucket
-  reports_path: >
-      dif-{{cookiecutter.client.lower().replace(' ', '_')}}-
-      {{cookiecutter.project.lower().replace(' ', '_')}}-
-      bucket/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
-      /reports
-  rawdata_path: >
-      dif-{{cookiecutter.client.lower().replace(' ', '_')}}-
-      {{cookiecutter.project.lower().replace(' ', '_')}}-
-      bucket/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
-      /raw-data
-  dvc_path: >
-      dif-{{cookiecutter.client.lower().replace(' ', '_')}}-
-      {{cookiecutter.project.lower().replace(' ', '_')}}-
-      bucket/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
-      /dvc-store
+  bucket_path: dif-{{cookiecutter.client.lower().replace(' ', '_')}}-{{cookiecutter.project.lower().replace(' ', '_')}}-bucket
+  mlflow_path: ${cloud_paths.bucket_path}/mlflow-bucket
+  reports_path: ${cloud_paths.bucket_path}/reports
+  rawdata_path: ${cloud_paths.bucket_path}/raw-data
+  dvc_path: ${cloud_paths.bucket_path}/dvc-store
 
 file_names:
   raw_file : raw_file.csv
