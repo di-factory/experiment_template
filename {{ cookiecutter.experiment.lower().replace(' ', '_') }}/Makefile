@@ -29,8 +29,12 @@ clean:
 	find . -type d -name "__pycache__" -delete
 
 ## Upload Data to S3
-sync_data_to_s3:
-	aws s3 sync data/ s3://$(BUCKET)/data/
+move_data_to_s3:
+	aws s3 sync $$HOME/$(CLIENT)-$(PROJECT)/$(EXPERIMENT)/data/raw s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ 
+
+## Download Data from S3
+move_data_from_s3:
+	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ $$HOME/$(CLIENT)-$(PROJECT)/$(EXPERIMENT)/data/raw
 
 ## create a s3 project bucket
 create_s3:
@@ -46,10 +50,6 @@ init_dvc_in_s3:
 	dvc push
 	git push
 	
-## Download Data from S3
-sync_data_from_s3:
-	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ $$HOME/$(CLIENT)-$(PROYECT)/$(EXPERIMENT)/data/raw-data
-
 ## Set up python interpreter environment
 environment:
 	@echo ">>> Creating environment"

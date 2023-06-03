@@ -1,6 +1,7 @@
 general_ml:
   seed: 123
   encoding: iso-8859-1
+  cloud: AWS
 
 paths:
   project_dir: ...
@@ -8,6 +9,30 @@ paths:
   interim_data: ${hydra:runtime.cwd}/data/interim
   processed_data: ${hydra:runtime.cwd}/data/processed
   reports: ${hydra:runtime.cwd}/reports
+
+cloud_paths:
+  bucket_path: >
+      dif-{{cookiecutter.client.lower().replace(' ', '_'))}}-
+      {{cookiecutter.project.lower().replace(' ', '_')}}-
+      bucket
+  mlflow-path: >
+      ${bucket_path}/mlflow/bucket
+  reports_path: >
+      dif-{{cookiecutter.client.lower().replace(' ', '_'))}}-
+      {{cookiecutter.project.lower().replace(' ', '_')}}-
+      bucket/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
+      /reports
+  rawdata_path: >
+      dif-{{cookiecutter.client.lower().replace(' ', '_'))}}-
+      {{cookiecutter.project.lower().replace(' ', '_')}}-
+      bucket/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
+      /raw-data
+  dvc_path: >
+      dif-{{cookiecutter.client.lower().replace(' ', '_'))}}-
+      {{cookiecutter.project.lower().replace(' ', '_')}}-
+      bucket/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
+      /dvc-store
+
 
 file_names:
   raw_file : raw_file.csv
