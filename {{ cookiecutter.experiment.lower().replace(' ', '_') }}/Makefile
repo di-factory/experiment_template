@@ -7,8 +7,8 @@
 CLIENT = {{ cookiecutter.client.lower().replace(' ', '_')}}
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT = {{ cookiecutter.project.lower().replace(' ', '_')}}
-EXPERIMENT_NAME = {{ cookiecutter.experiment.lower().replace(' ', '_')}}
-BUCKET = $(CLIENT)-$(PROJECT)-$(EXPERIMENT)-Bucket
+EXPERIMENT = {{ cookiecutter.experiment.lower().replace(' ', '_')}}
+BUCKET = dif-$(CLIENT)-$(PROJECT)-bucket
 
 
 #################################################################################
@@ -48,7 +48,7 @@ init_dvc_in_s3:
 	
 ## Download Data from S3
 sync_data_from_s3:
-	aws s3 sync s3://$(BUCKET)/dif-template $$(HOME)/$(CLIENT)-$(PROJECT)/$(EXPERIMENT)/dif-template
+	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ $$HOME/$(CLIENT)-$(PROYECT)/$(EXPERIMENT)/data/raw-data
 
 ## Set up python interpreter environment
 environment:
