@@ -11,12 +11,12 @@ paths:
   reports: ${hydra:runtime.cwd}/reports
 
 cloud_paths:
-  bucket_path: !|
-    dif-!{cookiecutter.client}-!{cookiecutter.project}-bucket
-  
+  bucket_path: >
+      dif-{{ cookiecutter.client.lower().replace(' ', '_')}}-
+      {{cookiecutter.project.lower().replace(' ', '_')}}-
+      bucket
   mlflow-path: >
       ${bucket_path}/mlflow/bucket
-  
   reports_path: >
       dif-{{cookiecutter.client.lower().replace(' ', '_')}}-
       {{cookiecutter.project.lower().replace(' ', '_')}}-
