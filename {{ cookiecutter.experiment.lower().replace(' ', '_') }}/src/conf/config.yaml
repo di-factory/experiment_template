@@ -10,6 +10,7 @@ paths:
   processed_data: ${hydra:runtime.cwd}/data/processed
   reports: ${hydra:runtime.cwd}/reports
 
+
 cloud_paths:
   bucket_path: dif-{{cookiecutter.client.lower().replace(' ', '_')}}-{{cookiecutter.project.lower().replace(' ', '_')}}-bucket
   experiment_path: ${cloud_paths.bucket_path}/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
@@ -64,7 +65,7 @@ data_pipeline:
 
 mlflow:
   tracking_uri: http://3.140.194.152:5000
-  tracking_experiment_name: Match4
+  tracking_experiment_name: {{ cookiecutter.experiment.lower().replace(' ', '_')}}
 
 
   

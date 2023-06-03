@@ -21,8 +21,13 @@ pip-all: test_environment
 	$ python3 -m pip install -r requirements.txt
 
 ## Make Dataset
-data: requirements
+data_set:
 	$ python3 src/data/make_dataset.py 
+
+## Make Model Trainning
+training:
+	$ python3 src/models/train_model.py 
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
@@ -39,7 +44,7 @@ move_data_from_s3:
 ## connecting mlflow to local sqlite database and s3 for artiffacts
 mlflow_server:
 	mlflow server --host 0.0.0.0:5000 \
-	--backend-store-uri sqlite:///mydb.sqlite \
+	--backend-store-uri sqlite:///../mydb.sqlite \
 	--default-artifact-root s3://$(BUCKET)/mlflow-bucket	
 	
 ## init DVC in S3
