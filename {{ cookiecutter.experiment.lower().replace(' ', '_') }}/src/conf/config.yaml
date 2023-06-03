@@ -12,10 +12,11 @@ paths:
 
 cloud_paths:
   bucket_path: dif-{{cookiecutter.client.lower().replace(' ', '_')}}-{{cookiecutter.project.lower().replace(' ', '_')}}-bucket
-  mlflow_path: ${cloud_paths.bucket_path}/mlflow-bucket
-  reports_path: ${cloud_paths.bucket_path}/reports
-  rawdata_path: ${cloud_paths.bucket_path}/raw-data
-  dvc_path: ${cloud_paths.bucket_path}/dvc-store
+  experiment_path: ${cloud_paths.bucket_path}/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
+  mlflow_path: ${cloud_paths.experiment_path}/mlflow-bucket
+  reports_path: ${cloud_paths.experiment_path}/reports
+  rawdata_path: ${cloud_paths.experiment_path}/raw-data
+  dvc_path: ${cloud_paths.experiment_path}/dvc-store
 
 file_names:
   raw_file : raw_file.csv
