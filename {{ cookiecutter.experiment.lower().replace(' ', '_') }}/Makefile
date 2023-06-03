@@ -38,7 +38,7 @@ move_data_from_s3:
 
 ## connecting mlflow to local sqlite database and s3 for artiffacts
 mlflow_server:
-	mlflow server -h 0.0.0.0:5000 \
+	mlflow server --host 0.0.0.0:5000 \
 	--backend-store-uri sqlite:///mydb.sqlite \
 	--default-artifact-root s3://$(BUCKET)/mlflow-bucket	
 	

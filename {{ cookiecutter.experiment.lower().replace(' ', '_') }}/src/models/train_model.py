@@ -12,7 +12,6 @@ from mlflow.models.signature import infer_signature
 import random
 
 
-@hydra.main(version_base=None, config_path="../conf", config_name="config")
 def train(cfg : DictConfig)-> None:
     # Load the data
     train_features = pd.read_csv(os.path.join(cfg.paths.processed_data,
@@ -69,10 +68,12 @@ def train(cfg : DictConfig)-> None:
 def main(cfg : DictConfig)-> None:
     mlflow.set_tracking_uri(cfg.mlflow.tracking_uri)
     mlflow.set_experiment(cfg.mlflow.tracking_experiment_name)
-    train()
+    train(cfg)
     
 if __name__ == "__main__":
     main()
+
+
 
 
 
