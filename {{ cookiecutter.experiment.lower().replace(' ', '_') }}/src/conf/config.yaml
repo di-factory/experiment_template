@@ -63,7 +63,7 @@ data_pipeline:
     percent_test: 0.10
 
 mlflow:
-  tracking_uri: 0.0.0.0:5000
+  tracking_uri: https://0.0.0.0:5000
   tracking_experiment_name: Match4
 
 

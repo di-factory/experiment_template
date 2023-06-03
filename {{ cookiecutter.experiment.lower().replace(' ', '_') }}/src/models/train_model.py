@@ -58,7 +58,6 @@ def train(cfg : DictConfig)-> None:
 
             #for k, pred in enumerate(predictions):
             #print(f' {pred}, {predict_proba[k][0]:.6f},{predict_proba[k][1]:.6f} ')
-    
             # Evaluate the model
             score= clf.score(test_features, test_labels)
             mlflow.log_metric("score", score)
@@ -66,10 +65,14 @@ def train(cfg : DictConfig)-> None:
             print("Model saved in run %s" % mlflow.active_run().info.run_uuid)
         mlflow.end_run()
 
-if __name__ == "__main__":
-    mlflow.set_tracking_uri('file:./mlruns')
-    mlflow.set_experiment('match experiment4')
-
+@hydra.main(version_base=None, config_path="../conf", config_name="config")
+def main(cfg : DictConfig)-> None:
+    mlflow.set_tracking_uri(cfg.mlflow.tracking_uri)
+    mlflow.set_experiment(cfg.mlflow.tracking_experiment_name)
     train()
+    
+if __name__ == "__main__":
+    main()
+
 
 
