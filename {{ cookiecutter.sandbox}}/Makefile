@@ -4,11 +4,12 @@
 # GLOBALS                                                                       #
 #################################################################################
 
-CLIENT = {{ cookiecutter.client.lower().replace(' ', '_')}}
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT = {{ cookiecutter.project.lower().replace(' ', '_')}}
-EXPERIMENT = {{ cookiecutter.experiment.lower().replace(' ', '_')}}
-BUCKET = dif-$(CLIENT)-$(PROJECT)-bucket
+CLIENT = {cookiecutter.client}
+PROJECT = {cookiecutter.project}
+EXPERIMENT = {cookiecutter.experiment}
+SANDBOX = {cookiecutter.sandbox} 
+BUCKET = {cookiecutter.bucket}
 
 
 #################################################################################
@@ -35,11 +36,11 @@ clean:
 
 ## Upload Data to S3
 move_data_to_s3:
-	aws s3 sync $$HOME/$(CLIENT)-$(PROJECT)/$(EXPERIMENT)/data/raw s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ 
+	aws s3 sync $$HOME/$(CLIENT)-$(PROJECT)/$(SANDBOX)/data/raw s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ 
 
 ## Download Data from S3
 move_data_from_s3:
-	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ $$HOME/$(CLIENT)-$(PROJECT)/$(EXPERIMENT)/data/raw
+	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ $$HOME/$(CLIENT)-$(PROJECT)/$(SANDBOX)/data/raw
 
 ## connecting mlflow to local sqlite database and s3 for artiffacts
 mlflow_server:

@@ -12,8 +12,8 @@ paths:
 
 
 cloud_paths:
-  bucket_path: dif-{{cookiecutter.client.lower().replace(' ', '_')}}-{{cookiecutter.project.lower().replace(' ', '_')}}-bucket
-  experiment_path: ${cloud_paths.bucket_path}/{{ cookiecutter.experiment.lower().replace(' ', '_')}}
+  bucket_path: {{cookiecutter.bucket}}
+  experiment_path: ${cloud_paths.bucket_path}/{{ cookiecutter.experiment}}
   mlflow_path: ${cloud_paths.experiment_path}/mlflow-bucket
   reports_path: ${cloud_paths.experiment_path}/reports
   rawdata_path: ${cloud_paths.experiment_path}/raw-data
@@ -65,7 +65,7 @@ data_pipeline:
 
 mlflow:
   tracking_uri: http://3.140.194.152:5000
-  tracking_experiment_name: {{ cookiecutter.experiment.lower().replace(' ', '_')}}
+  tracking_experiment_name: {{ cookiecutter.experiment}}
 
 
   

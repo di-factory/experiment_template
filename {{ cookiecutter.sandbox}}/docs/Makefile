@@ -77,17 +77,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/{{ cookiecutter.experiment.lower().replace(' ', '_') }}.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/{{ cookiecutter.sandbox }}.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/{{ cookiecutter.experiment.lower().replace(' ', '_') }}.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/{{ cookiecutter.sandbox }}.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/{{ cookiecutter.experiment.lower().replace(' ', '_') }}"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/{{ cookiecutter.experiment.lower().replace(' ', '_') }}"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/{{ cookiecutter.sandbox }}"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/{{ cookiecutter.sandbox }}"
 	@echo "# devhelp"
 
 epub:
