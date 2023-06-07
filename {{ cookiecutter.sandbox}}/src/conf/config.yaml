@@ -14,7 +14,7 @@ paths:
 cloud_paths:
   bucket_path: {{cookiecutter.bucket}}
   experiment_path: ${cloud_paths.bucket_path}/{{ cookiecutter.experiment}}
-  mlflow_path: ${cloud_paths.experiment_path}/mlflow-bucket
+  mlflow_path: ${cloud_paths.experiment_path}/mlflow
   reports_path: ${cloud_paths.experiment_path}/reports
   rawdata_path: ${cloud_paths.experiment_path}/raw-data
   dvc_path: ${cloud_paths.experiment_path}/dvc-store

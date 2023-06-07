@@ -36,17 +36,19 @@ clean:
 
 ## Upload Data to S3
 move_data_to_s3:
-	aws s3 sync $$HOME/$(CLIENT)-$(PROJECT)/$(SANDBOX)/data/raw s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ 
+	aws s3 sync $$HOME/$(CLIENT)-$(PROJECT)/$(SANDBOX)/data/raw \
+	s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ 
 
 ## Download Data from S3
 move_data_from_s3:
-	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ $$HOME/$(CLIENT)-$(PROJECT)/$(SANDBOX)/data/raw
+	aws s3 sync s3://$(BUCKET)/$(EXPERIMENT)/raw-data/ \
+	$$HOME/$(CLIENT)-$(PROJECT)/$(SANDBOX)/data/raw
 
 ## connecting mlflow to local sqlite database and s3 for artiffacts
 mlflow_server:
 	mlflow server --host 0.0.0.0:5000 \
 	--backend-store-uri sqlite:///../mydb.sqlite \
-	--default-artifact-root s3://$(BUCKET)/mlflow-bucket	
+	--default-artifact-root s3://$(BUCKET)/mlflow	
 	
 ## init DVC in S3
 init_dvc_in_s3:
