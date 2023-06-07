@@ -5,11 +5,11 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-CLIENT = {cookiecutter.client}
-PROJECT = {cookiecutter.project}
-EXPERIMENT = {cookiecutter.experiment}
-SANDBOX = {cookiecutter.sandbox} 
-BUCKET = {cookiecutter.bucket}
+CLIENT = {{cookiecutter.client}}
+PROJECT = {{cookiecutter.project}}
+EXPERIMENT = {{cookiecutter.experiment}}
+SANDBOX = {{cookiecutter.sandbox}} 
+BUCKET = {{cookiecutter.bucket}}
 
 
 #################################################################################
