@@ -13,7 +13,7 @@ click
 Sphinx
 coverage
 flake8
---upgrade: hydra-core
+hydra-core
 
 
 
