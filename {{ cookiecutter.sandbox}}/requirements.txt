@@ -1,6 +1,3 @@
-# local package
--e .
-
 python-dotenv>=0.5.1
 awscli
 #dvc-s3
@@ -15,6 +12,8 @@ coverage
 flake8
 hydra-core
 
+# local package
+-e .
 
 
 
